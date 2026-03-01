@@ -1,0 +1,146 @@
+---
+title: "PHP tips and tricks"
+description: "Collection of practical PHP tips and tricks to improve your code"
+---
+
+## Déstructuration d'un tableau dans une boucle
+
+Il est possible de déstructurer directement un tableau dans une boucle en PHP.
+
+```php
+$utilisateurs = [
+    [
+        'id' => 1,
+        'nom' => 'Alice'
+    ],
+    [
+        'id' => 2,
+        'nom' => 'Bob'
+    ],
+    [
+        'id' => 3,
+        'nom' => 'Charlie'
+    ],
+];
+
+// Boucle à travers les utilisateurs et déstructuration de l'id et du nom
+foreach ($utilisateurs as ['id' => $id, 'nom' => $nom]) {
+    echo "ID: $id, Nom: $nom\n";
+}
+```
+
+<Tip>
+Cette approche permet de déstructurer directement les clés du tableau dans la boucle foreach, rendant le code plus concis et lisible.
+</Tip>
+
+---
+
+## Déstructuration
+
+```php
+$user = [
+    'name' => 'larafrique',
+    'email' => 'contacta@larafrique.com',
+    'verified' => true
+];
+
+// Méthode 1
+
+$name = $user['name'];
+$email = $user['email'];
+
+echo "Nom : $name, Email : $email";
+// Nom : larafrique, Email : contact@larafrique.com
+
+// Utiliser la déstructuration
+['name' => $name, 'email' => $email] = $user;
+
+echo "Nom : $name, Email : $email";
+// Nom : larafrique, Email : contacta@larafrique.com
+```
+
+<Tip>
+La déstructuration permet d'extraire plusieurs valeurs d'un tableau en une seule ligne, rendant le code plus élégant.
+</Tip>
+
+---
+
+## Astuce avec `isset()`
+
+```php
+// Vous pouvez simplifier ceci
+if(isset($var1) && isset($var2) && isset($var3)) {
+    // votre code
+}
+
+// En ceci
+if(isset($var1, $var2, $var3)) {
+    // votre code
+}
+```
+
+<Tip>
+La fonction `isset()` accepte plusieurs paramètres, ce qui permet de vérifier l'existence de plusieurs variables en une seule fois.
+</Tip>
+
+---
+
+## Fusion de deux ou plusieurs tableaux
+
+```php
+$array1 = ['Laravel', 'Symfony'];
+$array2 = ['Vue.js', 'React'];
+
+// Avant
+$merged = array_merge($array1, $array2);
+// ['Laravel', 'Symfony', 'Vue.js', 'React']
+
+
+// Maintenant
+$merged = [...$array1, ...$array2];
+// ['Laravel', 'Symfony', 'Vue.js', 'React']
+```
+
+<Tip>
+L'opérateur de spread (`...`) offre une syntaxe plus moderne et concise pour fusionner des tableaux.
+</Tip>
+
+---
+
+## Filtrer facilement et ne garder que les valeurs "Truthy"
+
+On peut utiliser la fonction `array_filter` sans rien passer en deuxième paramètre pour ne garder que les valeurs implicitement égales à `true`
+
+```php
+$users = ['Larafrique', '', 'John Doe', null];
+
+// Avant
+$clean = array_filter($users, fn ($user) => !!$user);
+
+// Maintenant
+$clean = array_filter($users);
+// ["Larafrique", "John Doe"]
+```
+
+<Tip>
+Sans callback, `array_filter()` supprime automatiquement toutes les valeurs falsy (false, null, '', 0, etc.).
+</Tip>
+
+---
+
+## Transformer facilement en passant le nom de la fonction avec `array_map`
+
+```php
+$users = ['Larafrique', 'John Doe', 'Jane Doe'];
+
+// Avant
+$clean = array_map(fn (string $user) => strtoupper($user), $users);
+
+// Maintenant
+$clean = array_map('strtoupper', $users);
+// ["LARAFRIQUE", "JOHN DOE", "JANE DOE"]
+```
+
+<Tip>
+Vous pouvez passer directement le nom d'une fonction comme string à `array_map()` au lieu d'utiliser une closure, ce qui rend le code plus concis.
+</Tip>

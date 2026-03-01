@@ -1,0 +1,58 @@
+---
+title: "CSS tips and tricks"
+description: "Découvrez des astuces et techniques CSS modernes pour améliorer votre développement web"
+---
+
+## Imbrication native du CSS
+
+<Note>
+CSS supporte désormais l'imbrication native similaire à celle des préprocesseurs comme Sass, permettant d'écrire des styles plus organisés et maintenables.
+</Note>
+
+L'imbrication native permet d'écrire des sélecteurs imbriqués directement en CSS sans avoir besoin d'un préprocesseur. Le symbole `&` fait référence au sélecteur parent.
+
+### Exemple : Container avec variante full
+
+```css
+.container {
+    width: 95%;
+    max-width: 900px;
+    margin: auto;
+
+    /* Utilisation de '&' pour cibler '.container.full' */
+    &.full {
+        max-width: 1200px;
+
+        /* Styles appliqués aux enfants '.children' uniquement quand le parent est '.full' */
+        .children {
+            display: flex;
+            flex-wrap: wrap;
+            margin: -0.5rem;
+        }
+    }
+}
+```
+
+<Tip>
+Le symbole `&` est remplacé par le sélecteur parent, donc `&.full` devient `.container.full`.
+</Tip>
+
+### Exemple : États interactifs
+
+```css
+input {
+    border: 1px solid #ccc;
+    padding: 8px;
+    transition: border-color 0.3s ease;
+
+    /* '&' fait référence à 'input', donc 'input:focus' */
+    &:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+}
+```
+
+<Tip>
+L'imbrication native améliore la lisibilité du code en gardant les styles liés ensemble et réduit la répétition des sélecteurs.
+</Tip>
