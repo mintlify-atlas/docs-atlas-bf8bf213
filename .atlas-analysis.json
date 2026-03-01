@@ -1,0 +1,84 @@
+{
+  "projectType": "general",
+  "projectName": "Larafrique Tips",
+  "projectDescription": "A collaborative repository of practical tips, shortcuts, snippets, and best practices for Laravel, PHP, and CSS developers.",
+  "theme": "maple",
+  "primaryColor": "#FF2D20",
+  "lightColor": "#FFF5F5",
+  "darkColor": "#18181B",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Laravel",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": ["laravel/introduction"]
+          },
+          {
+            "group": "Core Concepts",
+            "pages": [
+              "laravel/eloquent",
+              "laravel/collections",
+              "laravel/blade",
+              "laravel/validation"
+            ]
+          },
+          {
+            "group": "Advanced",
+            "pages": [
+              "laravel/best-practices",
+              "laravel/helpers",
+              "laravel/commands",
+              "laravel/tutorials"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "PHP",
+        "groups": [
+          {
+            "group": "Tips & Tricks",
+            "pages": ["php/tips"]
+          }
+        ]
+      },
+      {
+        "tab": "CSS",
+        "groups": [
+          {
+            "group": "Tips & Tricks",
+            "pages": ["css/tips"]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Eloquent ORM tips and shortcuts",
+    "Laravel Collections best practices",
+    "Blade templating techniques",
+    "Form validation strategies",
+    "Laravel helper functions and utilities",
+    "Artisan command tips",
+    "PHP array manipulation tricks",
+    "Modern CSS techniques"
+  ],
+  "publicApiSurface": [
+    "User::updateOrCreate()",
+    "User::firstWhere()",
+    "User::whereBetween()",
+    "User::whereAny()",
+    "Collection::times()",
+    "Collection::filter()",
+    "Number::abbreviate()",
+    "Number::spell()",
+    "Str::slug()",
+    "Str::isUrl()",
+    "Str::isJson()",
+    "abort_if()",
+    "to_route()",
+    "today()->diffForHumans()"
+  ]
+}
